@@ -1,4 +1,4 @@
-# -*- coding: UTF-8 -*-
+﻿# -*- coding: UTF-8 -*-
 ##'''
 ##发送txt文本邮件
 ##小五义：http://www.cnblogs.com/xiaowuyi
@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 mailto_list=["chenyingzju@126.com"] 
 mail_host="smtp.126.com"  #设置服务器
 mail_user="ychenid@l26.com"    #用户名
-mail_pass="chen15285649896."   #口令 
+mail_pass="******"   #口令 
 mail_postfix="126.com"  #发件箱的后缀
   
 def send_mail(to_list,sub,content):  
