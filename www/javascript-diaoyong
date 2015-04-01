@@ -1,0 +1,31 @@
+1.JavaScript采用的格式如下：
+<Script Language="JavaScript">
+JavaScript 语句 
+</Script>
+把上述语句放在HTML的<head>与</head>之间，也可放在<body>与</body>之间。
+例子：在网页上显示“你好！”。
+<html>
+<body>
+<Script Language="JavaScript">
+alert("你好！") 
+</script>
+</body>
+</html>
+2、在浏览器地址栏直接执行JavaScript脚本
+
+也可以在浏览器的地址栏中输入JavaScript语句，由浏览器直接执行。
+如输入：javascript:alert(200*75)
+3、调用JavaScript文件 
+
+可以将纯JavaScript的语句另外保存在一个"*.js"的文件中，需要时再调用。
+
+例子：调用test.js文件，显示提示。 
+<html>
+<body>
+调用test.js文件
+<script language="JavaScript" src="test.js">
+</script>
+</body>
+</html> 
+test.js的文件内容如下： 
+alert("这是被调用的语句。")
