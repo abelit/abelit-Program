@@ -1,12 +1,12 @@
 #!/usr/bin/env python3  
 #coding: utf-8  
-import smtplib  
+import smtplib
 from email.mime.text import MIMEText  
 from email.header import Header  
 sender = 'ychenid@126.com'  
 receiver = 'ychenid@hotmail.com'  
 #subject = 'python email test'  
-smtpserver = 'smtp.163.com'  
+smtpserver = 'smtp.126.com'  
 username = 'ychenid@126.com'  
 password = 'chen15285649896.'
 def send_mail(towho,sub,content):
@@ -27,8 +27,7 @@ if __name__=='__main__':
         print("发送成功")
     else:
         print("发送失败")
-
-
+##        
 ###!/usr/bin/env python3
 ###coding: utf-8  
 ##import smtplib  
@@ -47,8 +46,9 @@ if __name__=='__main__':
 ##smtp.login(username, password)  
 ##smtp.sendmail(sender, receiver, msg.as_string())  
 ##smtp.quit()  
-
-
+##
+##
+##
 ### -*- coding: UTF-8 -*-
 ##'''
 ##发送txt文本邮件
