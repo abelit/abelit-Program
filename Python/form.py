@@ -40,7 +40,7 @@ def customize_form():    #define customized function
     cols_input=int(input("Please enter the cols of form:"))
     text_width_input=int(input("Please enter the width of text:"))
     text_height_input=int(input("Please enter the height of text:"))
-    table_title_input=input("Please enter the tile of table:")
+    table_title_input=input("Please enter the title of table:")
     table_unit_input=input("Please enter the unit of table:")
     make_form(table_title_input,table_unit_input,rows_input,cols_input,text_width_input,text_height_input)  #call function make_form()
     
