@@ -1,3 +1,4 @@
+#!/bin/bash python
 ##screen_width=101
 ##box_total_width=81
 ##box_each_width=10
@@ -59,7 +60,7 @@ def random_form(): #define form function by system random
     text_width_input=random.randrange(5,16,1) #takes a random number from 5 to 15
     text_height_input=random.randrange(1,4,1)
     array_title=['How old are you?','Learning English','Learn Linux/Unix/Windows','Speaking Chinese','Watch TV','The menu of fruish','Sports Items']
-    array_unit=['单位：亿元','单位：元','单位：￥','Unit:$']
+    array_unit=['Unit:$']
     table_title_input='Table:'+random.choice(array_title)
     table_unit_input=random.choice(array_unit)
     make_form(table_title_input,table_unit_input,rows_input,cols_input,text_width_input,text_height_input)
@@ -71,7 +72,7 @@ print('='*80)
 
 def exe_my_form():
     print("Please choose the method to make form, 1 means making form by default,2 means making form by customized and 3 means making form by system random.")
-    choose=input("Please choose a number between 1(default) , 2(customized) or 3(random),and 0(exit):")
+    choose=raw_input("Please choose a number between 1(default) , 2(customized) or 3(random),and 0(exit):")
     if choose=='1' or choose=='default':
         choose='1'
     if choose=='2' or choose=='customized':
