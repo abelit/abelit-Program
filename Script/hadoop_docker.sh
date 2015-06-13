@@ -1,0 +1,269 @@
+#! /bin/bash
+
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
+#===============================================================================================
+#   System Required:  CentOS7.x (32bit/64bit)
+#   Description: Build Hadoop Cluster for CentOS
+#   Author: ChenYing <ychenid@live.com>
+#   Intro:  http://www.yinglinux.com 
+#===============================================================================================
+
+clear
+echo "#############################################################"
+echo "# Build Hadoop Cluster for CentOS 6 or 7 (32bit/64bit)"
+echo "# Intro: http://yinglinux.com"
+echo "#"
+echo "# Author: ChenYing <ychenid@live.com>"
+echo "#"
+echo "#############################################################"
+echo ""
+
+# Make sure only root can run our script
+function rootness(){
+	if [[ $EUID -ne 0 ]]; then
+		echo "Error:This script must be run as root!" 1>&2
+		exit 1
+	fi
+}
+
+#Start docker service
+function startdocker(){
+	systemctl restart docker.service
+}
+
+#Run docker container
+function startcontainer(){
+	function start_dns_container(){
+		#Start a dns (which is based dnsmasq server) container
+		docker run -t -d --name dns -h dns -v /etc/dnsmasq.d/:/etc/dnsmasq.d/ centos:hadoop
+
+		#Get ip address of the running container whose name is dns
+		container='dns'
+		dns_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
+		echo "host-record=$container,$dns_ip" > /etc/dnsmasq.d/host_$container
+
+		echo ""
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo "The dns container has been started."
+		echo "The name of container:${container}."
+		echo "The IPAddress: ${dns_ip}"
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo ""
+	}
+
+	function start_hadoop_container(){
+		#Get ip address of the running container whose name is dns
+		container='dns'
+		dns_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
+		
+
+		#Start a master hadoop container (Namenode)
+		docker run -t -d --dns=$dns_ip --name master -h master -v /usr/local/dockerconf/known_hosts:/root/.ssh/known_hosts -v /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves:/usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves centos:hadoop
+		container='master'
+		namenode_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
+		echo "host-record=$container,$namenode_ip" > /etc/dnsmasq.d/host_$container	
+
+		echo ""
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo "The namenode(master) has been started."
+		echo "The name of container:${container}."
+		echo "The IPAddress: ${namenode_ip}"
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo ""
+
+		#Start some slave hadoop container (Datanode)
+		echo "Please the number of Datanode that you want to build: "
+		read -p "(Default will create 5 datanodes):" number
+		if [ "$number" = "" ];then
+			number=5
+		fi
+		while [ $number -gt 0 ]
+		do
+			docker run -t -d --dns=$dns_ip --name slave${number} -h slave${number} centos:hadoop
+			container="slave${number}"
+			datanode_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
+			echo "host-record=$container,$datanode_ip" > /etc/dnsmasq.d/host_$container			
+
+			echo ""
+			echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+			echo "The datanode slave${number} has been started."
+			echo "The name of container:${container}."
+			echo "The IPAddress: ${datanode_ip}"
+			echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+			echo ""
+			number=$[ $number-1 ]
+		done
+
+	}
+	start_dns_container
+	start_hadoop_container
+}
+
+#Use Hadoop
+function enterhadoop(){
+	echo "Now you can go to the node of hadoop. Default you will go to the master node."
+	echo "If you don't know which node you have started and you can input 'node' to show."
+	echo "Please input the name of node you will go to:"
+	read -p "(Default is master node.):" node
+	if [ "$node" = "" ];then
+		node='master'
+	elif [ "$node" = "node" ];then
+		list="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`"
+		echo $list
+	else
+	docker-enter $node
+	fi
+}
+
+
+#Restart dnsmasq service in the dns server
+function restartdns(){
+	docker-enter dns /usr/sbin/dnsmasq
+}
+
+#Reset Docker
+function resetdocker(){
+	rm -f /etc/dnsmasq.d/*
+	cat /dev/null > /usr/local/dockerconf/known_hosts #Clear known_hosts contents OR you can use command "echo "" > /usr/local/dockerconf/known_hosts" 
+	#list1="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`" #Get the name of hadoop container
+	list="`docker ps -a | grep -E "slave|master|dns" | awk '{print $NF}'`" #Get the name of hadoop container
+	#Stop Container
+	function stopcontainer(){
+		for containername in $list
+		do
+			echo "The Hadoop Node `docker stop $containername` has been stoped! "
+		done
+	}
+	
+	#Romove Container
+	function rmcontainer(){
+		for containername in $list
+		do
+			echo "The Hadoop Node `docker rm $containername` has been removed! "
+		done
+	}
+	
+	if [ "$list" != "" ];then
+		echo "This will clear and remove all hadoop container! "
+		echo "Now the docker is stopping container ... "
+		stopcontainer
+		echo "Now the docker is removing container ... "
+		rmcontainer
+	
+		
+	else
+		echo "The hadoop container maybe have been cleared and removed. No created or running hadoop container exits."
+		
+	fi
+	#Call makesymble function
+	makesymble
+	#Call headinfo function
+	headinfo
+}
+
+#Look up whether there have some created or running hadoop container
+function lookupcontainer(){
+	list1="`docker ps | grep -E "slave|master|dns"`"
+	list2="`docker ps -a | grep -E "slave|master|dns"`"
+	if [ "$list1" != "" ];then
+		#Running
+		echo "There have some running hadoop container."
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		docker ps | grep -E "slave|master|dns"
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo ""
+	else
+		echo "No hadoop container is running."
+	fi
+	
+
+	if [ "$list2" != "" ];then
+		#Running
+		echo "There have some created hadoop container."
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		docker ps -a | grep -E "slave|master|dns"
+		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+		echo ""
+	else
+		echo "No hadoop container exists."
+	fi
+
+	makesymble
+	headinfo
+}
+
+#SSH Configuration in the docker
+function sshconf(){
+	list="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`" #Get the name of hadoop container
+	for container in $list
+	do
+		container_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
+		known_hosts="$container,$container_ip"
+		known_hosts=$known_hosts" ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNhSjuhiLxYqNBQPnwUKQJlPfs/lqHPGwMxcT5D9saXXZ6gb75f22Yn1ClRmktzh29vOziEMCMgm3iOiQ/UOdak="
+		echo $known_hosts >> /usr/local/dockerconf/known_hosts
+	done
+}
+
+#Namenode Configuration
+function namenodeconf(){
+	echo "`docker ps | grep 'slave' | awk '{print $NF}'`" > /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves
+}
+
+#Make Symble Start
+function makesymble(){
+	for ((i=1;i<=2;i++))
+	do
+		echo ""
+	done
+	echo "-----------------------------------------------------------------------"
+}
+
+#Run Hadoop Container
+function runcontainer(){
+	rootness
+	startdocker
+	startcontainer
+	namenodeconf
+	sshconf
+	restartdns
+	enterhadoop
+}
+
+#Show Result of Installation
+function resultinfo(){
+	echo ""
+	echo "*******************************************************************************************"
+	echo "*******************************************************************************************"
+	echo "Congradulations! Hadoop Cluster has been Built and Insltalled successfully on your Docker. "
+	echo "*******************************************************************************************"
+	echo "*******************************************************************************************"
+	echo ""
+}
+
+#The Header Information
+function headinfo(){
+	echo "This shell script will build hadoop cluster based on the virtulization of docker:"
+	echo ""
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Notice!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	echo "There maybe have some container you have ever created.And you should "
+	echo "clear and remove them before build new container."
+	echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Notice!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+	#Call makesymble function
+	makesymble
+
+	echo "1. Clear and Remove Hadoop Container What have been created!"
+	echo "2. Build Hadoop Cluster Using Docker. "
+	echo "3. Look up created or running Hadoop Container."
+	echo "Others to Exit. "
+	echo "Please input the number:"
+	read num
+	case "${num}" in 
+	[1] ) (resetdocker);;
+	[2] ) (runcontainer);;
+	[3] ) (lookupcontainer);;
+	 *  ) echo "Nothing you will do.";;
+	esac
+}
+headinfo
