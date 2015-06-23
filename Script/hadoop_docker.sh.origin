@@ -6,7 +6,7 @@ export PATH
 #   System Required:  CentOS7.x (32bit/64bit)
 #   Description: Build Hadoop Cluster for CentOS
 #   Author: ChenYing <ychenid@live.com>
-#   Intro:  http://www.dockertime.com 
+#   Intro:  http://www.yinglinux.com 
 #===============================================================================================
 
 clear
@@ -30,76 +30,6 @@ function rootness(){
 #Start docker service
 function startdocker(){
 	systemctl restart docker.service
-}
-
-function preEnvironment(){
-		#checking if a directory exists
-		if [ -d "/usr/local/dockerconf" ]
-		then
-			#checking if a file exists
-			if [ -e "/usr/local/dockerconf/known_hosts" ];then
-				echo ""
-			else
-				touch /usr/local/dockerconf/known_hosts
-			fi
-		else
-			mkdir  /usr/local/dockerconf
-			#checking if a file exists
-			if [ -e "/usr/local/dockerconf/known_hosts" ];then
-				echo ""
-			else
-				touch /usr/local/dockerconf/known_hosts
-			fi
-		fi
-			
-		if [ -d "/usr/local/hadoop/hadoop-2.7.0/etc/hadoop" ]
-		then
-			#checking if a file exists
-			if [ -e "/usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves" ];then
-				echo ""
-			else
-				touch /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves
-			fi
-		else
-			mkdir -p /usr/local/hadoop/hadoop-2.7.0/etc/hadoop
-			#checking if a file exists
-			if [ -e "/usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves" ];then
-				echo ""
-			else
-				touch /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves
-			fi
-		fi
-
-		if [ -d "/usr/local/spark-1.3.1-bin-hadoop2.6/conf" ]
-		then
-			#checking if a file exists
-			if [ -e "/usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves" ];then
-				echo ""
-			else
-				touch /usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves
-			fi
-
-			if [ -e "/usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-en.sh" ];then
-				echo ""
-			else
-				touch /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-en.sh
-			fi
-		else
-			mkdir -p /usr/local/spark-1.3.1-bin-hadoop2.6/conf
-			#checking if a file exists
-			if [ -e "/usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves" ];then
-				echo ""
-			else
-				touch /usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves
-			fi
-			
-			if [ -e "/usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-en.sh" ];then
-				echo ""
-			else
-				touch /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-en.sh
-			fi
-		fi
-		
 }
 
 #Run docker container
@@ -127,17 +57,12 @@ function startcontainer(){
 		container='dns'
 		dns_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
 		
-		
+
 		#Start a master hadoop container (Namenode)
-		docker run -t -d --dns=$dns_ip --name master -h master -v /usr/local/dockerconf/known_hosts:/root/.ssh/known_hosts -v /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves:/usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves -v /usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves:/usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves -v /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh:/usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh centos:hadoop
+		docker run -t -d --dns=$dns_ip --name master -h master -v /usr/local/dockerconf/known_hosts:/root/.ssh/known_hosts -v /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves:/usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves centos:hadoop
 		container='master'
 		namenode_ip=$(docker inspect $container | grep IPAddress | cut -f4 -d '"')
 		echo "host-record=$container,$namenode_ip" > /etc/dnsmasq.d/host_$container	
-		echo "export JAVA_HOME=/usr/java/jdk1.8.0_25"  >> /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
-		echo "export SCALA_HOME=/usr/local/scala-2.10.5" >> /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
-		echo "export SPARK_WORKER_MEMORY=1g" >> /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
-		echo "export SPARK_MASTER_IP=$namenode_ip" >> /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
-		echo "export MASTER=spark://$namenode_ip:7077" >> /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
 
 		echo ""
 		echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++"
@@ -182,16 +107,13 @@ function enterhadoop(){
 	echo "Please input the name of node you will go to:"
 	read -p "(Default is master node.):" node
 	if [ "$node" = "" ];then
-		node='master'	
+		node='master'
+	elif [ "$node" = "node" ];then
+		list="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`"
+		echo $list
 	else
-		if [ "$node" = "node" ];then
-			list="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`"
-			echo $list
-			enterhadoop
-		fi
-		node=$node
-	fi
 	docker-enter $node
+	fi
 }
 
 
@@ -204,8 +126,6 @@ function restartdns(){
 function resetdocker(){
 	rm -f /etc/dnsmasq.d/*
 	cat /dev/null > /usr/local/dockerconf/known_hosts #Clear known_hosts contents OR you can use command "echo "" > /usr/local/dockerconf/known_hosts" 
-	#delete the lines include "export" as the first word
-	sed -i '/^export/d' /usr/local/spark-1.3.1-bin-hadoop2.6/conf/spark-env.sh
 	#list1="`docker ps | grep -E "slave|master|dns" | awk '{print $NF}'`" #Get the name of hadoop container
 	list="`docker ps -a | grep -E "slave|master|dns" | awk '{print $NF}'`" #Get the name of hadoop container
 	#Stop Container
@@ -290,11 +210,6 @@ function namenodeconf(){
 	echo "`docker ps | grep 'slave' | awk '{print $NF}'`" > /usr/local/hadoop/hadoop-2.7.0/etc/hadoop/slaves
 }
 
-#Spark Slaves
-function sparkslaveconf(){
-	echo "`docker ps | grep 'slave' | awk '{print $NF}'`" > /usr/local/spark-1.3.1-bin-hadoop2.6/conf/slaves
-}
-
 #Make Symble Start
 function makesymble(){
 	for ((i=1;i<=2;i++))
@@ -307,11 +222,9 @@ function makesymble(){
 #Run Hadoop Container
 function runcontainer(){
 	rootness
-	preEnvironment
 	startdocker
 	startcontainer
 	namenodeconf
-	sparkslaveconf
 	sshconf
 	restartdns
 	enterhadoop
