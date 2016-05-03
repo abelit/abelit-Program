@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#coding:utf-8
+# -*- coding: utf-8 -*-
 
 #Function:Auto generate reports for Oracle Server based on latex file
 #Description:
@@ -41,7 +41,7 @@ class FileHandler:
 
     def reader(self):
         #global lines
-        input_file=open(self.infile,'r')
+        input_file=open(self.infile,'r',encoding='utf-8')
         lines=input_file.read()
         input_file.close()
         return lines
@@ -55,8 +55,9 @@ class FileHandler:
 
 
     def writer(self):
-        output_file=open(self.outfile,'w')
+        output_file=open(self.outfile,'w',encoding='utf-8')
         lines=self.file_handler()
+        lines.encode(encoding='utf-8').decode(encoding='utf-8')
         output_file.write(lines)
         output_file.close()
 
