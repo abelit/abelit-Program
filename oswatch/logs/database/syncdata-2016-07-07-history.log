@@ -1,0 +1,22 @@
+
+2016-07-07 17:06:19 system_change_number before synchronizing:26424063706
+
+2016-07-07 17:06:19 Starting synchronizing data from  GZGS_ZY.A_BM_XZQH to GZGS_GY.A_BM_XZQH using merge method
+sync sql:
+	MERGE INTO GZGS_GY.A_BM_XZQH dst  USING GZGS_ZY.A_BM_XZQH src ON ( dst.BM = src.BM )
+	WHEN MATCHED THEN
+	UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN ('520000','520590','520591',520596)
+	WHEN NOT MATCHED THEN
+	INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+	;commit;
+2016-07-07 17:06:19 Sync data successfully!
+
+2016-07-07 17:06:19 Starting synchronizing data from  GZGS_ZY.A_BM_XZQH to GZGS_GY.A_BM_XZQH using merge method
+sync sql:
+	MERGE INTO GZGS_GY.A_BM_XZQH dst  USING GZGS_ZY.A_BM_XZQH src ON ( dst.BM = src.BM )
+	WHEN MATCHED THEN
+	UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN ('520000','520590','520591',520596)
+	WHEN NOT MATCHED THEN
+	INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+	;commit;
+2016-07-07 17:06:19 Sync data successfully!
