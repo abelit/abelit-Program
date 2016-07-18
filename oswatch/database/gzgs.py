@@ -9,7 +9,7 @@
 # Email:ychenid@live.com
 # Date:2016-07-01
 
-import syncdata
+import datasync
 
 tablename=['A_BM_XZQH']
 ownersrc=['GZGS_GY']
@@ -25,7 +25,7 @@ def gzgsdata(type='manual',method=method,tablename=tablename,ownersrc=ownersrc,o
 		select table_name from all_tables where owner='%s'
 		'''
 		for i in ownersrc:
-			tables_sql=syncdata.sqlformat(tablename,i)
+			tables_sql=datasync.sqlformat(tablename,i)
 			tablename=syncdata.sqlresult(tables_sql)
 			for j in tablename:
 				for k in ownerdst:

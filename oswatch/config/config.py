@@ -7,12 +7,20 @@
 # Email:ychenid@live.com
 # Date:2016-07-11
 import time
+import getpass
 
+
+# username = raw_input("Enter Your Username: ")
+        # password = getpass.getpass()
+        # db_host = raw_input("Enter Your Hostname: ")
+        # db_port = raw_input("Enter Your Database Port: ")
+        # db_instance = raw_input("Enter Your Database Instance: ")
+        
 # Oracle configuration
 oracle={
 	'username':'sys',
 	'password':'dba1d71f678513c02d0',
-	'db_host':'172.28.1.221',
+	'db_host':'172.28.1.222',
 	'db_port':'1521',
 	'db_instance':'gzgszxk'
 }

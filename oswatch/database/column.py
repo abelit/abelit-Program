@@ -6,7 +6,7 @@
 # Author:Abelit
 # Email:ychenid@live.com
 # Date:2016-07-07
-import coredef
+from sqlquery import SQLQuery as sqlquery
 
 def add_column():
 	add_column='''
@@ -28,9 +28,9 @@ def query_column(tablename,owner):
 	'''
 	# Return result of formatting sql text
 	return {
-		'column_pk':coredef.execute_sql(coredef.format_text(column_pk,tablename,owner)),
-		'column_ct':coredef.execute_sql(coredef.format_text(column_ct,tablename,owner)),
-		'column_nm':coredef.execute_sql(coredef.format_text(column_nm,tablename,owner))
+		'column_pk':sqlquery.query_sql(sqlquery.format_text(column_pk,tablename,owner)),
+		'column_ct':sqlquery.query_sql(sqlquery.format_text(column_ct,tablename,owner)),
+		'column_nm':sqlquery.query_sql(sqlquery.format_text(column_nm,tablename,owner))
 	}
 
 #print(query_column('A_BM_XZQH','GZGS_GY'))
