@@ -8,6 +8,7 @@
 # Date:2016-07-11
 import time
 import getpass
+import os
         
 # username = raw_input("Enter Your Username: ")
         # password = getpass.getpass()
@@ -26,5 +27,5 @@ oracle={
 
 # Configure log path
 logpath={
-    'dblog':'../logs/'+'.log',
+    'dblog':'../logs/'+'dblog.log',
 }

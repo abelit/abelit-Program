@@ -1,0 +1,10 @@
+2016-07-21 17:10:12 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:10:34,595 logwrite.py[line:44] DEBUG This is a test message
+2016-07-21 17:11:15 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:19 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:20 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:21 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:22 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:22 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:11:23 logwrite.py[line:59] DEBUG This is a test message
+2016-07-21 17:14:20,181 logwrite.py[line:44] DEBUG This is a test message

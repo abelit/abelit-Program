@@ -27,4 +27,4 @@ class DirGet:
         return dirlist
 
 if __name__=='__main__':
-    print(DirGet('../').show_dir())
+    print(DirGet('./').show_dir())
