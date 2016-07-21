@@ -11,11 +11,11 @@ import re
 import time
 import sys
 import datetime
-import logwrite
-import column
+
+from columnquery import ColumnQuery as columnquery
 from sqlquery import SQLQuery as sqlquery
 
-class SyncData:
+class DataSync:
     """docstring for Syncdata"""
     def __init__(self, arg):
         super(Syncdata, self).__init__()
@@ -30,8 +30,8 @@ class SyncData:
     method=''
 
     def sync_data(method=method,tablesrc=tablesrc,tabledst=tabledst,ownersrc=ownersrc,ownerdst=ownerdst,condition=condition):
-        column_pk=column.query_column(tablesrc,ownersrc)['column_pk']
-        column_nm=column.query_column(tablesrc,ownersrc)['column_nm']
+        column_pk=columnquery.query_column(tablesrc,ownersrc)['column_pk']
+        column_nm=columnquery.query_column(tablesrc,ownersrc)['column_nm']
         # Using merge method to synchorize data
         sql_merge='''
         MERGE INTO %s dst  USING %s src ON ( %s = %s )
@@ -107,4 +107,5 @@ class SyncData:
             print("empty list, no primary key on the table")
 
 # Call function to sync data
-SyncData.sync_data(tablesrc='A_BM_XZQH',tabledst='A_BM_XZQH',ownerdst='GZGS_HZ',ownersrc='GZGS_GY',condition="",method='merge')
+if __name__=='__main__':
+    DataSync.sync_data(tablesrc='A_BM_XZQH',tabledst='A_BM_XZQH',ownerdst='GZGS_HZ',ownersrc='GZGS_GY',condition="",method='merge')

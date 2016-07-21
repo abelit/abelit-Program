@@ -2,9 +2,18 @@
 import sys
 import logging
 
-def writelog(logdir='',message=''):
-	logger=logging.getLogger()
-	handler=logging.FileHandler(logdir)
-	logger.addHandler(handler)
-	logger.setLevel(logging.NOTSET)
-	logger.info(message)
+import __init__
+from config import dbconfig
+
+class LogWrite:
+    """docstring for LogWrite"""
+    def __init__(self, arg):
+        super(LogWrite, self).__init__()
+        self.arg = arg
+        
+    def write_log(logdir=dbconfig.logpath['dblog'],message='a'):
+        logger=logging.getLogger()
+        handler=logging.FileHandler(logdir)
+        logger.addHandler(handler)
+        logger.setLevel(logging.NOTSET)
+        logger.info(message)
