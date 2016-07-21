@@ -36,8 +36,7 @@ class SQLQuery:
         curs.execute('commit')
         curs.close()
         conn.close()
-class SQL(object):
-	"""docstring for SQL"""
+        
 	def __init__(self, arg):
 		super(SQL, self).__init__()
 		self.arg = arg
