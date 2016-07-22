@@ -37,32 +37,30 @@ class SQLQuery:
         curs.close()
         conn.close()
         
-	def __init__(self, arg):
-		super(SQL, self).__init__()
-		self.arg = arg
+    def __init__(self, arg):
+        super(SQL, self).__init__()
+        self.arg = arg
 
-	def users():
-		pass
+    def users():
+        pass
 
-	def tables():
-		pass
+    def tables():
+        pass
 
-	def tablespaces():
-		pass
+    def tablespaces():
+        pass
 
-	def datafiles():
-		pass
+    def datafiles():
+        pass
 
-	def olinelogs():
-		pass
+    def olinelogs():
+        pass
 
-	def archivelogs():
-		pass
+    def archivelogs():
+        pass
 
-	def sessions():
-		pass
+    def sessions():
+        pass
 
-	def locks():
-		pass
-
-		
+    def locks():
+        pass
