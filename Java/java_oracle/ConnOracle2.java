@@ -12,11 +12,11 @@ public class TestOra2 {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
 			//连接oracle
-			Connection ct=DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:orcl","c##scott","tiger");
+			Connection ct=DriverManager.getConnection("jdbc:oracle:thin:@172.28.1.222:1521:gzgszxk","abelit","cy123");
 			
 			Statement sm=ct.createStatement();
 
-			ResultSet rs=sm.executeQuery("select * from emp");
+			ResultSet rs=sm.executeQuery("select * from a_bm_xzqh");
 			while(rs.next()){
 				System.out.println("用户名："+rs.getString(2));
 			}

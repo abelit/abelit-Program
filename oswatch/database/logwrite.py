@@ -13,41 +13,13 @@ import logging.config
 import logging.handlers
 import configparser
 
+# Import customize modules
 import __init__
 from config import dbconfig
 
-
-class PathGet(object):
-    """docstring for PathGet"""
-    def __init__(self, file=__init__.PROJECT_INFO['project_name']):
-        super(PathGet, self).__init__()
-        self.file = file
-        
-    def get_separator(self):
-        if 'Windows' in platform.system():
-            separator = '\\'
-        else:
-            separator = '/'
-        return separator
-
-    def get_path(self):
-        os_path = os.getcwd()
-        separator = self.get_separator()
-        str = os_path
-        str = str.split(separator)
-        while len(str) > 0:
-            spath = separator.join(str)+separator+self.file
-            leng = len(str)
-            if os.path.exists(spath):
-                return spath
-            str.remove(str[leng-1])
-            
-    def get_dir(self):
-        return os.path.dirname(self.get_path())
-
 class LogWrite:
     """docstring for LogWrite"""
-    def __init__(self, logpath=PathGet().get_dir()+'/logs/dblog.log', loglevel='debugLogger', logmessage='', logconf=PathGet().get_dir()+'/config/logging.conf'):
+    def __init__(self, logpath=__init__.PathGet(__init__.PROJECT_INFO['project_name']).get_dir()+'/logs/dblog.log', loglevel='debugLogger', logmessage='', logconf=__init__.PathGet(__init__.PROJECT_INFO['project_name']).get_dir()+'/config/logging.conf'):
         super(LogWrite, self).__init__()
         self.logpath=logpath
         self.loglevel=loglevel
@@ -73,9 +45,10 @@ class LogWrite:
             logger=logging.getLogger(self.loglevel)
             # Call lambda function to do switch statement
             result = {
-                'debugLogger': lambda:logger.debug(self.logmessage),
+                'debugLogger': lambda: logger.debug(self.logmessage),
                 'infoLogger': lambda: logger.info(self.logmessage),
-                'errorLogger': lambda:  logger.error(self.logmessage)
+                'warnLogger': lambda: logger.warn(self.logmessage),
+                'errorLogger': lambda: logger.error(self.logmessage)
             }[self.loglevel]()  
         else:
             # Configure logging parameters
@@ -99,6 +72,7 @@ class LogWrite:
             result = {
                 'debugLogger': lambda:logging.debug(self.logmessage),
                 'infoLogger': lambda:logging.info(self.logmessage),
+                'warnLogger': lambda: logger.warn(self.logmessage),
                 'errorLogger': lambda:logging.error(self.logmessage) 
             }[self.loglevel]()  
 

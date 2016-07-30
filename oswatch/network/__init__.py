@@ -18,16 +18,17 @@ class PathGet(object):
         super(PathGet, self).__init__()
         self.file = file
         
-    def get_separator(self):
-        if 'Windows' in platform.system():
-            separator = '\\'
-        else:
-            separator = '/'
-        return separator
+#    def get_separator(self):
+#        if 'Windows' in platform.system():
+#            separator = '\\'
+#        else:
+#            separator = '/'
+#        return separator
 
     def get_path(self):
         os_path = os.getcwd()
-        separator = self.get_separator()
+       # separator = self.get_separator()
+        separator = os.sep
         str = os_path
         str = str.split(separator)
         while len(str) > 0:

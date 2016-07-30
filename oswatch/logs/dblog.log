@@ -1,36 +1,207 @@
-2016-07-22 14:11:56 logwrite.py[line:96] DEBUG This is a test message
-2016-07-22 14:24:03 logwrite.py[line:97] DEBUG This is a test message
-2016-07-22 14:24:36,737 logwrite.py[line:75] DEBUG This is a test message
-2016-07-22 14:28:30 logwrite.py[line:99] DEBUG This is a test message
-2016-07-22 14:28:50 logwrite.py[line:99] DEBUG This is a test message
-2016-07-22 14:29:27,879 logwrite.py[line:99] DEBUG This is a test message
-2016-07-22 14:31:05,343 logwrite.py[line:99] DEBUG This is a test message
-2016-07-22 14:31:31,659 logwrite.py[line:75] DEBUG This is a test message
-2016-07-22 14:31:44,737 logwrite.py[line:75] DEBUG This is a test message
-2016-07-22 14:32:56,913 logwrite.py[line:75] DEBUG This is a test message
-2016-07-22 14:34:55,413 logwrite.py[line:76] DEBUG This is a test message
-2016-07-22 14:37:47,549 logwrite.py[line:76] DEBUG This is a test message
-2016-07-22 14:39:04,727 logwrite.py[line:100] DEBUG 
-2016-07-22 14:41:34,556 logwrite.py[line:101] INFO This is a info message
-2016-07-22 14:59:34,916 logwrite.py[line:101] INFO This is a info message
-2016-07-22 15:18:02,035 logwrite.py[line:101] INFO This is a info message
-2016-07-22 15:19:05,396 logwrite.py[line:101] INFO This is a info message
-2016-07-22 15:20:05,024 logwrite.py[line:101] INFO This is a info message
-2016-07-22 15:20:51,765 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:20:51,765 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:21:27,895 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:21:27,895 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:21:44,525 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:21:44,525 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:25:08,080 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:25:08,080 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:26:35,060 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:26:35,060 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:27:36,926 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:27:36,926 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:38:01,111 logwrite.py[line:77] INFO This is a info message
-2016-07-22 15:38:01,111 logwrite.py[line:77] INFO This is a info message
-2016-07-22 17:01:49,564 logwrite.py[line:77] INFO This is a info message
-2016-07-22 17:01:49,564 logwrite.py[line:77] INFO This is a info message
-2016-07-22 17:03:50,917 logwrite.py[line:77] INFO This is a info message
-2016-07-22 17:03:50,917 logwrite.py[line:77] INFO This is a info message
+2016-07-26 16:23:14,217 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-26 16:23:47,026 logwrite.py[line:78] INFO [('520100', '???0', '520000', None, '??????')]
+2016-07-26 16:23:47,310 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-26 16:23:47,315 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-26 16:33:04,709 logwrite.py[line:78] INFO This is a info message
+2016-07-26 16:33:22,088 logwrite.py[line:78] INFO This is a info message
+2016-07-26 16:33:23,327 logwrite.py[line:78] INFO This is a info message
+2016-07-26 16:33:40,304 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-26 16:37:58,111 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-26 16:49:59,835 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-26 16:51:37,861 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 10:36:48,145 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 11:00:46,830 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 11:11:55,221 logwrite.py[line:78] INFO [('520100', '贵阳市', '520000', None, '贵州省贵阳市')]
+2016-07-27 11:11:55,351 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 11:11:55,356 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 11:18:24,235 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 11:21:53,879 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 11:27:29,217 logwrite.py[line:80] ERROR [ERROR]	Failed to connect to Database as sysdba.ORA-12543: TNS:destination host unreachable
+
+2016-07-27 11:28:39,504 logwrite.py[line:80] ERROR Failed to connect to Database as sysdba.ORA-12543: TNS:destination host unreachable
+
+2016-07-27 11:29:29,978 logwrite.py[line:80] ERROR Failed to connect to Database as sysdba.ORA-12543: TNS:destination host unreachable
+
+2016-07-27 11:30:22,080 logwrite.py[line:80] ERROR Failed to connect to Database as sysdba.ORA-12543: TNS:destination host unreachable
+
+2016-07-27 11:30:43,128 logwrite.py[line:80] ERROR Failed to connect to Database as sysdba.ORA-12543: TNS:destination host unreachable
+
+2016-07-27 11:31:00,482 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 11:31:00,582 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 11:31:00,589 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 12:03:25,665 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 12:03:52,542 logwrite.py[line:78] INFO [('520100', '贵阳市', '520000', None, '贵州省贵阳市')]
+2016-07-27 12:03:52,662 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 12:03:52,668 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:00:35,546 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:21:18,632 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:38:30,427 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:38:30,496 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:38:30,511 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:38:30,680 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:38:55,323 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:49:55,838 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 13:50:18,676 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:03:23,531 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:10:28,154 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:21:30,631 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:23:17,899 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:26:54,025 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:27:34,230 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:27:37,367 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:27:50,178 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:28:07,132 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:28:13,445 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:28:38,064 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:32:21,373 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:32:21,963 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:32:24,011 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:32:27,126 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:32:35,256 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:33:13,286 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:33:16,490 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:34:53,011 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:35:15,343 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:35:18,481 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:36:12,749 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:36:17,072 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:37:02,835 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:46:29,826 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:49:06,994 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:49:28,692 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:50:51,138 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:54:57,605 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:55:46,075 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:58:33,331 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:58:37,952 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:58:44,867 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:58:48,134 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 14:58:51,240 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:00:27,229 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:01:05,879 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:01:39,806 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:01:48,365 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:08:23,011 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:08:23,099 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 15:08:23,106 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:19:32,086 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:19:57,956 logwrite.py[line:78] INFO [('520100', '贵阳市', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:19:58,052 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 15:19:58,057 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:20:33,503 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:20:51,413 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:22:04,969 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:22:08,228 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:31:09,495 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:49:06,687 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:50:04,208 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:50:24,119 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:50:26,099 logwrite.py[line:78] INFO [('520100', '贵阳市0', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:50:26,202 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 15:50:26,210 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:50:26,216 logwrite.py[line:78] INFO []
+2016-07-27 15:50:27,585 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:50:27,725 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:50:31,089 logwrite.py[line:79] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 15:50:44,447 logwrite.py[line:78] INFO [('520100', '贵阳市', '520000', None, '贵州省贵阳市')]
+2016-07-27 15:50:45,141 logwrite.py[line:78] INFO 
+        MERGE INTO GZGS_HZ.A_BM_XZQH dst  USING GZGS_GY.A_BM_XZQH src ON ( dst.BM = src.BM )
+        WHEN MATCHED THEN
+        UPDATE SET dst.NR=src.NR,dst.PARID=src.PARID,dst.TEST=src.TEST,dst.MC=src.MC  WHERE BM IN (520100)
+        WHEN NOT MATCHED THEN
+        INSERT VALUES (src.BM,src.NR,src.PARID,src.TEST,src.MC)
+        
+2016-07-27 15:50:45,147 logwrite.py[line:78] INFO Sync data successfully between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-27 16:22:15,587 logwrite.py[line:78] INFO This is a info message
+2016-07-27 16:28:46,750 logwrite.py[line:78] INFO This is a info message
+2016-07-27 16:29:14,108 logwrite.py[line:78] INFO This is a info message
+2016-07-27 16:29:26,287 logwrite.py[line:78] INFO This is a info message
+2016-07-27 16:29:38,287 logwrite.py[line:49] INFO This is a info message
+2016-07-27 16:29:42,167 logwrite.py[line:50] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-28 09:15:04,883 logwrite.py[line:49] INFO This is a info message
+2016-07-28 09:15:09,030 logwrite.py[line:50] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-28 10:35:16,294 logwrite.py[line:50] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-28 13:37:38,201 logwrite.py[line:50] WARNING No data need to syncthonize between GZGS_GY.A_BM_XZQH and GZGS_HZ.A_BM_XZQH
+2016-07-28 16:36:58,638 logwrite.py[line:50] WARNING Please asign the type of backup data.Liking byuser|bytable|byfull.
+2016-07-28 16:39:35,687 logwrite.py[line:50] WARNING Please asign the type of backup data.Like byuser|bytable|byfull.
+2016-07-28 16:50:01,128 logwrite.py[line:49] INFO This is a info message
+2016-07-28 16:50:24,855 logwrite.py[line:49] INFO exp user/password full=y file=/u01/app/oracle/backup/gzgszxk_exp_20160728.dmp log=/u01/app/oracle/backup/gzgszxk_exp_20160728.log
+2016-07-28 16:52:58,065 logwrite.py[line:49] INFO exp user/password full=y file=/u01/app/oracle/backup/gzgszxk_exp_20160728.dmp log=/u01/app/oracle/backup/gzgszxk_exp_20160728.log
+2016-07-28 16:54:06,336 logwrite.py[line:49] INFO exp user/password full=y file=/u01/app/oracle/backup/gzgszxk_exp_20160728.dmp log=/u01/app/oracle/backup/gzgszxk_exp_20160728.log
+2016-07-28 17:01:46,113 logwrite.py[line:49] INFO exp user/password full=y file=/u01/app/oracle/backup/gzgszxk_exp_20160728.dmp log=/u01/app/oracle/backup/gzgszxk_exp_20160728.log
+2016-07-28 17:12:05,168 logwrite.py[line:49] INFO exp user/password full=y file=/u01/app/oracle/backup/gzgszxk_exp_20160728.dmp log=/u01/app/oracle/backup/gzgszxk_exp_20160728.log
+2016-07-28 17:14:16,336 logwrite.py[line:49] INFO expdp user/password full=y directory=BACKUP dumpfile=gzgszxk_expdp_20160728.dmp logfile=gzgszxk_exp_20160728.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-28 17:14:57,870 logwrite.py[line:49] INFO expdp user/password full=y directory=BACKUP dumpfile=gzgszxk_expdp_20160728.dmp logfile=gzgszxk_expdp_20160728.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 09:00:57,317 logwrite.py[line:49] INFO expdp user/password full=y directory=BACKUP dumpfile=gzgszxk_expdp_20160729.dmp logfile=gzgszxk_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 09:04:03,904 logwrite.py[line:49] INFO expdp user/password tables=A_BM_XZQH directory=BACKUP dumpfile=A_BM_XZQH_expdp_20160729.dmp logfile=A_BM_XZQH_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 09:04:03,935 logwrite.py[line:49] INFO expdp user/password tables=A_QYMC directory=BACKUP dumpfile=A_QYMC_expdp_20160729.dmp logfile=A_QYMC_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 09:59:35,922 logwrite.py[line:49] INFO expdp user/password tables=A_BM_XZQH directory=BACKUP dumpfile=A_BM_XZQH_expdp_20160729.dmp logfile=A_BM_XZQH_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 09:59:35,929 logwrite.py[line:49] INFO expdp user/password tables=A_QYMC directory=BACKUP dumpfile=A_QYMC_expdp_20160729.dmp logfile=A_QYMC_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 10:00:06,097 logwrite.py[line:49] INFO expdp user/password tables=A_BM_XZQH directory=BACKUP dumpfile=A_BM_XZQH_expdp_20160729.dmp logfile=A_BM_XZQH_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 10:00:06,104 logwrite.py[line:49] INFO expdp user/password tables=A_QYMC directory=BACKUP dumpfile=A_QYMC_expdp_20160729.dmp logfile=A_QYMC_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 11:03:10,651 logwrite.py[line:49] INFO expdp user/password tables=A_BM_XZQH directory=BACKUP dumpfile=A_BM_XZQH_expdp_20160729.dmp logfile=A_BM_XZQH_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 11:03:10,672 logwrite.py[line:49] INFO expdp user/password tables=A_QYMC directory=BACKUP dumpfile=A_QYMC_expdp_20160729.dmp logfile=A_QYMC_expdp_20160729.log  parallel=16 cluster=n REUSE_DUMPFILES=Y
+2016-07-29 13:38:42,586 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY file=/u01/app/oracle/backup/GZGS_GY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_GY_imp_20160729.log
+2016-07-29 13:38:42,621 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY file=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.log
+2016-07-29 13:38:59,179 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY file=/u01/app/oracle/backup/GZGS_GY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_GY_imp_20160729.log
+2016-07-29 13:38:59,186 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY file=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.log
+2016-07-29 13:42:47,996 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY file=/u01/app/oracle/backup/GZGS_GY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_GY_imp_20160729.log
+2016-07-29 13:42:48,002 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY file=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.dmp log=/u01/app/oracle/backup/GZGS_ZY_imp_20160729.log
+2016-07-29 13:43:31,991 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_BM_XZQH file=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.dmp log=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.log
+2016-07-29 13:43:31,997 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY table=A_QYMC file=/u01/app/oracle/backup/A_QYMC_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYMC_imp_20160729.log
+2016-07-29 13:45:24,462 logwrite.py[line:49] INFO imp user/password full=y file=/u01/app/oracle/backup/gzgszxk_imp_20160729.dmp log=/u01/app/oracle/backup/gzgszxk_imp_20160729.log ignore=y
+2016-07-29 13:48:44,338 logwrite.py[line:49] INFO imp user/password full=y file=/u01/app/oracle/backup/gzgszxk_imp_20160729.dmp log=/u01/app/oracle/backup/gzgszxk_imp_20160729.log ignore=y
+2016-07-29 13:48:55,341 logwrite.py[line:49] INFO imp user/password full=y file=/u01/app/oracle/backup/gzgszxk_imp_20160729.dmp log=/u01/app/oracle/backup/gzgszxk_imp_20160729.log ignore=y
+2016-07-29 13:49:10,589 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_BM_XZQH file=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.dmp log=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.log
+2016-07-29 13:49:10,604 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY table=A_QYMC file=/u01/app/oracle/backup/A_QYMC_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYMC_imp_20160729.log
+2016-07-29 13:52:24,465 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_BM_XZQH file=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.dmp log=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.log
+2016-07-29 13:52:24,471 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_QYMC file=/u01/app/oracle/backup/A_QYMC_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYMC_imp_20160729.log
+2016-07-29 13:52:24,510 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_QYZT file=/u01/app/oracle/backup/A_QYZT_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYZT_imp_20160729.log
+2016-07-29 13:52:24,517 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY table=A_BM_XZQH file=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.dmp log=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.log
+2016-07-29 13:52:24,525 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY table=A_QYMC file=/u01/app/oracle/backup/A_QYMC_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYMC_imp_20160729.log
+2016-07-29 13:52:24,532 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_ZY touser=GZGS_ZY table=A_QYZT file=/u01/app/oracle/backup/A_QYZT_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYZT_imp_20160729.log
+2016-07-29 13:53:47,017 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_BM_XZQH file=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.dmp log=/u01/app/oracle/backup/A_BM_XZQH_imp_20160729.log
+2016-07-29 13:53:47,023 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_QYMC file=/u01/app/oracle/backup/A_QYMC_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYMC_imp_20160729.log
+2016-07-29 13:53:47,030 logwrite.py[line:49] INFO imp user/password fromuser=GZGS_GY touser=GZGS_GY table=A_QYZT file=/u01/app/oracle/backup/A_QYZT_imp_20160729.dmp log=/u01/app/oracle/backup/A_QYZT_imp_20160729.log

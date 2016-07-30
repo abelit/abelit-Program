@@ -12,7 +12,7 @@ import datetime
 import time
 
 import logwrite
-from sqlquery import SQLQuery as sqlquery
+from sqlquery import SQLQuery
 
 class LogMiner:
     """docstring for LogMiner"""
@@ -45,9 +45,9 @@ class LogMiner:
     archive='''
     select name from v$archived_log where to_char(completion_time,'YYYY-MM-DD HH:mm:SS') between '%s' and '%s'
     '''
-    archive_sql=sqlquery.format_text(archive,logconf['start_time'],logconf['end_time'])
-    onlinelog=sqlquery.query_sql(log,isresult='true')
-    archivelog=sqlquery.query_sql(archive_sql,isresult='true')
+    archive_sql=SQLQuery().format_text(archive,logconf['start_time'],logconf['end_time'])
+    onlinelog=SQLQuery().query_sql(log)
+    archivelog=SQLQuery().query_sql(archive_sql)
 
     #logminer_shell='c:\\users\\abelit\\desktop\\logminer.sh'
     logminer_shell='/home/abelit/Documents/logminer.sh'
