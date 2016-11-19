@@ -1,0 +1,107 @@
+  424  grep "These credentials do not match our records" -r .
+  425  grep "in the email address" -r .
+  426  grep "Please include an" -r .
+  427  grep "include" -r .
+  428  grep "include" -nr .
+  429  grep "include" -ar .
+  430  man grep
+  431  grep "These credentials do not match our records" -r .
+  432  grep "These credentials do not match our records" -r --color .
+  434  grep "These credentials do not match our records" -r --color=auto .
+  439  grep "These credentials do not match our records" -r .
+  444  grep -r "https://laravel" .
+  445  grep -r "https://laravel" .
+  446  grep -r "/build" .
+  447  grep -r "/assets" .
+  448  grep -r "^/assets" .
+  449  grep -r "^\/assets" .
+  450  grep 
+  459  grep -r "/build" .
+  460  man grep
+  461  man grep
+  462  grep -er "/build" .
+  463  grep -r -e "^/build" .
+  464  grep -r -e "/build" .
+  465  grep -r "/build" .
+  466  grep -r "\"/build" .
+  467  grep -r "\"/assets" .
+  468  grep -r "\"/assets" . 
+  469  grep -nr "\"/assets" . 
+  470  grep -nr "\"/assets" . 
+  471  grep -r "\"/assets" . 
+  473  grep "/build" index.htm 
+  474  grep "/build" index.htm 
+  477  grep "/build" index.htm 
+  500  grep "/build" index.htm 
+  501  grep "/build" .
+  502  grep -r "/build" .
+  503  grep -r "/build" . 
+  504  grep -r "/build" . | sed -i -n ''
+  506  grep -r "/build" . | sed -i -n 's/\/build/..\/build/g' docs/*.htm
+  512  grep -r "/build" . | sed -i 's/\/build/..\/build/g' *.htm
+  519  grep  "/build" . | sed -i 's/\/build/..\/build/g' *.htm
+  520  grep  "/build" * | sed -i 's/\/build/..\/build/g' *.htm
+  521  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g' *.htm
+  522  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g' *.htm
+  523  grep  "/assets" *.htm | sed -i 's/\/assets/..\/assets/g' *.htm
+  524  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g'
+  526  grep "src=\""
+  527  grep "src=\"" .
+  528  grep -r "src=\"" .
+  542  grep -r "/docs/docs"
+  543  grep -r "/docs/docs" .
+  544  grep -r "/docs/docs" .
+  546  grep -r "docs/docs" .
+  548  grep "https://laravel.com/" .
+  549  grep -r "https://laravel.com/" .
+  550  grep -r "https://laravel.com/" . | awk -F ':' {print $1}
+  553  grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'
+  554  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do print $file;done
+  555  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do echo $file;done
+  556  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  557  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  558  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do echo 1111;echo $file;done
+  559  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do `sed -i 's/https:\/\/laravel.com\///g' $file`;done
+  560  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do echo $file;done | wc -l
+  561  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  562  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do echo $file;done | wc -l
+  564  grep -r "docs/docs"
+  565  grep -r "docs/docs" .
+  566  grep -r "docs" .
+  570  grep -r "docs" .
+  579  history | grep "grep"
+  580  history | grep "grep|sed"
+  581  history | grep "grep||sed"
+  582  history | grep "grep" > replacestring.txt
+  475  sed -i 's/\/build/..\/..\//g'
+  476  sed -i 's/\/build/..\/..\//g' index.htm 
+  479  sed -i 's/..\/..\//..\/..\/build/g' index.htm 
+  480  sed -i 's/..\/..\/build/.\/build/g' index.htm 
+  481  sed -i 's/"\//".\//g' index.htm 
+  504  grep -r "/build" . | sed -i -n ''
+  506  grep -r "/build" . | sed -i -n 's/\/build/..\/build/g' docs/*.htm
+  512  grep -r "/build" . | sed -i 's/\/build/..\/build/g' *.htm
+  519  grep  "/build" . | sed -i 's/\/build/..\/build/g' *.htm
+  520  grep  "/build" * | sed -i 's/\/build/..\/build/g' *.htm
+  521  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g' *.htm
+  522  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g' *.htm
+  523  grep  "/assets" *.htm | sed -i 's/\/assets/..\/assets/g' *.htm
+  524  grep  "/build" *.htm | sed -i 's/\/build/..\/build/g'
+  525  sed -i 's/\/build/..\/build/g' *.htm
+  529  sed -i 's/src=\"\//src=\".\//g' *.htm
+  530  sed -i 's/src=\"\//src=\"..\//g' *.htm
+  531  sed -i 's/href=\"\//href=\"..\//g' *.htm
+  537  sed -i 's/href=\"\//href=\".\//g' *.htm
+  538  sed -i 's/src=\"\//src=\".\//g' *.htm
+  540  sed -i 's/https:\/\/laravel.com\///g' 5.htm 
+  547  sed -i 's/docs\/docs/docs/g' *.htm
+  556  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  557  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  559  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do `sed -i 's/https:\/\/laravel.com\///g' $file`;done
+  561  for file in `grep -r "https://laravel.com/" . | awk -F ':' '{print $1}'`;do sed -i 's/https:\/\/laravel.com\///g' $file;done
+  571  sed -i 's/docs//g' *.htm
+  575  sed -i 's/https:\/\/laravel.com\///g' 5.htm 
+  576  sed -i 's/docs\/docs/docs/g' *.htm
+  580  history | grep "grep|sed"
+  581  history | grep "grep||sed"
+  583  history | grep "sed" >> replacestring.txt

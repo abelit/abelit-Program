@@ -1,0 +1,48 @@
+version: '2'
+
+services:
+  mysql:
+    image: mysql:latest
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: abelit
+      MYSQL_DATABASE: abelit
+      MYSQL_USER: abelit
+      MYSQL_PASSWORD: abelit
+    privileged: true
+    restart: always
+
+  postgres:
+    image: postgres:latest
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: abelit
+      POSTGRES_USER: abelit
+      POSTGRES_DB: abelit
+    privileged: true
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - ./mongo:/data/db
+    ports:
+      - "27017:27017"
+    privileged: true
+    restart: always
+
+  redis:
+    image: redis:latest
+    volumes:
+      - ./redis:/data
+    ports:
+      - "6379:6379"
+    privileged: true
+    restart: always
+

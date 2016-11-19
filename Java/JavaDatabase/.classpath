@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="driver/jedis-2.1.0.jar"/>
+	<classpathentry kind="lib" path="driver/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="driver/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="driver/mongodb-driver-3.3.0.jar"/>
+	<classpathentry kind="lib" path="driver/bson-3.3.0.jar"/>
+	<classpathentry kind="lib" path="driver/mongodb-driver-core-3.3.0.jar"/>
+	<classpathentry kind="lib" path="driver/postgresql-9.4.1212.jar"/>
+	<classpathentry kind="lib" path="driver/sqlite-jdbc-3.15.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
